@@ -1,6 +1,11 @@
 import React from 'react'
-import { Button } from '../src/ui/core'
+import { Button } from '../src/ui'
 
 export default function App() {
-  return <Button>UI кнопочка</Button>
+  return (
+    <>
+      <Button>UI кнопочка</Button>
+      <Button disabled>Disabled</Button>
+    </>
+  )
 }

@@ -1,0 +1,24 @@
+:root {
+  --buttonShadow: 0px 4px 20px rgba(123, 101, 232, 0.5);
+  --buttonPadding: 16px;
+}
+
+.button {
+  background: var(--primary);
+  color: #eee;
+  outline: none;
+  border: none;
+  border-radius: var(--borderRadius);
+  padding: var(--buttonPadding);
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: var(--buttonShadow);
+}
+
+.button:disabled {
+  opacity: var(--disabled);
+  box-shadow: none;
+  cursor: not-allowed;
+}

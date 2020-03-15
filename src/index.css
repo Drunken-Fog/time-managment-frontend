@@ -6,9 +6,21 @@
   --borderRadius: 5px;
   --disabled: .7;
 }
-  
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('./assets/fonts/ProductSans-Regular.eot');
+  src: local('Product Sans'), local('ProductSans-Regular'),
+      url('./assets/fonts/ProductSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/ProductSans-Regular.woff') format('woff'),
+      url('./assets/fonts/ProductSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   padding: 0;
   margin: 0;
   color: var(--textColor);
+  font-family: "Product Sans", sans-serif;
 }

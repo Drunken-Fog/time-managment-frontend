@@ -1,0 +1,74 @@
+:root {
+  --backgroundColorPrimary: #f5f5f5;
+  --ellipseBorderRadius: 50%;
+}
+
+.Field {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin: 14px 5px;
+}
+
+.Field input {
+  border-radius: var(--borderRadius);
+  background-color: var(--backgroundColorPrimary);
+  outline: none;
+  border: 2px solid var(--backgroundColorPrimary);
+  min-height: 26px;
+  max-height: 35px;
+  min-width: 325px;
+  padding: 6px 16px;
+  font-size: 18px;
+  color: var(--textColor);
+  margin-left: 8px;
+}
+
+.Field input:disabled {
+  opacity: var(--disabled);
+  cursor: not-allowed;
+}
+
+.Field input:disabled + label {
+  opacity: var(--disabled);
+}
+
+.Field input::placeholder {
+  color: var(--secondTextColor);
+}
+
+.Field input:focus {
+  border: 2px solid #7b65e8;
+  background: var(--white);
+}
+
+.Field input:focus + .FieldLabelDefault {
+  background: var(--primary);
+}
+
+.Field input + .FieldLabelDefault div {
+  background: white;
+  border-radius: var(--ellipseBorderRadius);
+  width: 7px;
+  height: 7px;
+}
+
+
+.Field input:focus + .FieldLabelDefault div {
+  display: none;
+}
+
+.Field input + .FieldLabelDefault {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary);
+  border-radius: var(--ellipseBorderRadius);
+  width: 17px;
+  height: 17px;
+}
+
+/*TODO: errors  */

@@ -1,0 +1,22 @@
+:root {
+  --progressLineBorderRadius: 6px;
+  --progressLineBoxShadow: 0px 0px 10px rgba(123, 101, 232, 0.8);
+  --progressLineHeight: 14px;
+}
+
+.bar {
+  background: var(--silver);
+  border-radius: var(--progressLineBorderRadius);
+  width: 100%;
+  height: var(--progressLineHeight);
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background: var(--primary);
+  border-radius: var(--progressLineBorderRadius);
+  box-shadow: var(--progressLineBoxShadow);
+}

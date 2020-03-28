@@ -1,0 +1,49 @@
+:root {
+  --boxWidth: 600px;
+  --boxTitleFontSize: 30px;
+  --boxTitleLineHeight: 36px;
+  --boxBoxShadow: 0px 4px 40px rgba(123, 101, 232, 0.1);
+  --boxPaddingTop: 17px;
+}
+
+.box {
+  text-align: center;
+  max-width: var(--boxWidth);
+  margin: 0 auto;
+  box-shadow: var(--boxBoxShadow);
+  border-radius: var(--borderRadius);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--boxWidth);
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.title {
+  font-style: normal;
+  font-weight: normal;
+  padding-top: var(--boxPaddingTop);
+  font-size: var(--boxTitleFontSize);
+  line-height: var(--boxTitleLineHeight);
+}
+
+@media (max-width: 768px) {
+  .box {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0;
+  }
+
+  .bottom {
+    position: absolute;
+    display: block;
+    width: 100%;
+    bottom: 0;
+  }
+}

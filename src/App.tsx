@@ -1,27 +1,17 @@
 import React from 'react'
-import { Button, Field } from './ui'
+import { FormBox } from './ui'
+import { FormAuth, EnterFromSocialMedia } from './components'
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <Field
-        generalType='text'
-        placeholder='Денис'
-        name='name'
-        id='name'
-        required={false}
-        disabled={false}
+    <div className='App'>
+      <FormBox
+        title='Вход'
+        form={<FormAuth />}
+        bottom={<EnterFromSocialMedia />}
       />
-      <Field
-        generalType='password'
-        placeholder='Почта'
-        name='email'
-        id='email'
-        required={false}
-        disabled={true}
-      />
-      <Button>UI кнопочка</Button>
-      <Button disabled>Disabled</Button>
-    </>
+    </div>
   )
 }
+
+export default App

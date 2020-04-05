@@ -1,6 +1,7 @@
 :root {
   --buttonShadow: 0px 4px 20px rgba(123, 101, 232, 0.5);
   --buttonPadding: 16px;
+  --buttonFontSize: 17px;
 }
 
 .button {
@@ -11,6 +12,10 @@
   border-radius: var(--borderRadius);
   padding: var(--buttonPadding);
   cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--buttonFontSize);
+  line-height: 21px;
 }
 
 .button:hover {

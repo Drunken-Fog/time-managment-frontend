@@ -1,5 +1,4 @@
 import React from 'react'
-
 import styles from './ProgressLine.module.css'
 
 type ProgressLineProps = {

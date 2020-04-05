@@ -6,7 +6,7 @@
 .Field {
   display: flex;
   height: fit-content;
-  width: fit-content;
+  width: 100%;
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
@@ -25,6 +25,9 @@
   font-size: 18px;
   color: var(--textColor);
   margin-left: 8px;
+  box-shadow: none;
+  -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .Field input:disabled {
@@ -72,3 +75,12 @@
 }
 
 /*TODO: errors  */
+
+@media (max-width: 768px) {
+  .Field {
+    width: auto;
+  }
+  .Field input {
+    min-width: auto;
+  }
+}

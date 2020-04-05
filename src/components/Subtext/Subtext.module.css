@@ -1,0 +1,10 @@
+:root {
+  --subtextPaddingTop: 16px;
+  --subTextPaddingBottom: 30px;
+}
+
+.text {
+  padding-top: var(--subtextPaddingTop);
+  padding-bottom: var(--subTextPaddingBottom);
+  color: var(--secondTextColor);
+}

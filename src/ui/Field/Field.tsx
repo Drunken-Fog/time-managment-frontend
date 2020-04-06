@@ -6,6 +6,7 @@ type generalFieldType = 'text' | 'email' | 'password'
 type FieldProps = {
   generalType?: generalFieldType
   labelText?: string
+  withCircle?: boolean
   errorText?: string
   placeholder?: string
   name?: string
@@ -16,7 +17,7 @@ type FieldProps = {
 }
 
 export const Field: React.FC<FieldProps> = props => {
-  let {
+  const {
     generalType,
     labelText,
     errorText,
@@ -26,6 +27,7 @@ export const Field: React.FC<FieldProps> = props => {
     required,
     disabled,
     onChange,
+    withCircle,
   } = props
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -33,7 +35,12 @@ export const Field: React.FC<FieldProps> = props => {
   }
 
   return (
-    <FieldWrapper htmlFor={id} errorText={errorText} labelText={labelText}>
+    <FieldWrapper
+      htmlFor={id}
+      errorText={errorText}
+      labelText={labelText}
+      withCircle={withCircle}
+    >
       <input
         type={generalType || 'text'}
         name={name}

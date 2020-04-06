@@ -9,6 +9,7 @@ function noop() {
 const DEFAULT_DATA = {
   errorText: 'Ошибка',
   placeholder: 'Денис',
+  labelText: 'Лейбл',
   name: 'login',
   id: 'login',
   required: true,
@@ -20,13 +21,14 @@ const DEFAULT_DATA = {
 const FieldDefaultComponent = (
   <Field
     disabled={!DEFAULT_DATA.disabled}
-    generalType={'text'}
+    generalType='text'
     placeholder={DEFAULT_DATA.placeholder}
     name={DEFAULT_DATA.name}
     id={DEFAULT_DATA.id}
     onChange={DEFAULT_DATA.onChange}
     required={DEFAULT_DATA.required}
     errorText={DEFAULT_DATA.errorText}
+    labelText={DEFAULT_DATA.labelText}
   />
 )
 
@@ -39,6 +41,7 @@ describe('Рендер компонента Field', () => {
       required,
       disabled,
       name,
+      labelText,
     } = DEFAULT_DATA
 
     test('Должен рендерить элемент input', function() {
@@ -51,8 +54,15 @@ describe('Рендер компонента Field', () => {
       const label = container.querySelector(`label[for=${id}]`)
       expect(label).toBeInTheDocument()
     })
+    test('Должен рендерить элемент с текстом для label', function() {
+      const { getByLabelText } = render(FieldDefaultComponent)
+      const label = getByLabelText(labelText)
+      expect(label).toBeInTheDocument()
+    })
     test('Должен рендерить элемент div внутри label', function() {
-      const { container } = render(FieldDefaultComponent)
+      const { container } = render(
+        <Field generalType='text' name={name} id={id} withCircle />
+      )
       const divInsideLabel = container.querySelector(`label[for=${id}] div`)
       expect(divInsideLabel).toBeInTheDocument()
     })
@@ -79,11 +89,9 @@ describe('Рендер компонента Field', () => {
       const { getByPlaceholderText } = render(
         <Field
           disabled={disabled}
-          generalType={'text'}
+          generalType='text'
           placeholder={placeholder}
-          name={name}
           id={id}
-          required={required}
         />
       )
       const input = getByPlaceholderText(placeholder)

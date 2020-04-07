@@ -6,7 +6,7 @@ type ButtonProps = {
   id?: string
   onClick?: (event: React.SyntheticEvent) => void
   disabled?: boolean
-  width: number | string
+  width?: number | string
 }
 
 export const Button: React.FC<ButtonProps> = props => {

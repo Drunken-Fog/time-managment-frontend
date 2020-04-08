@@ -1,0 +1,56 @@
+:root {
+  --timerBackgroundColor: #4e3ba8;
+}
+.wrapper {
+  width: 100%;
+  max-width: 385px;
+  color: var(--white);
+  height: 162px;
+  background: var(--primary);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.wrapper h2 {
+  color: var(--white);
+  padding-top: 24px;
+  padding-left: 20px;
+  letter-spacing: 2px;
+  font-size: 28px;
+}
+
+.wrapper h3 {
+  font-size: 16px;
+  color: var(--white);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.wrapper p {
+  font-size: 17px;
+  color: var(--white);
+}
+
+.wrapper > div {
+  display: flex;
+  padding-top: 14px;
+  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer + div {
+  margin-right: 75px;
+  line-height: 25px;
+}
+
+
+.timer {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  background: var(--timerBackgroundColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 28px;
+}

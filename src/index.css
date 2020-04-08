@@ -1,10 +1,11 @@
 :root {
   --textColor: #5b5b5b;
   --secondTextColor: #9f9f9f;
-  --primary: #7B65E8;
+  --primary: #7b65e8;
+  --danger: #ff7a7a;
   --white: #fff;
   --borderRadius: 5px;
-  --disabled: .7;
+  --disabled: 0.7;
   --silver: #f5f5f5;
   --tabletSize: 768px;
 }
@@ -13,9 +14,10 @@
   font-family: 'Product Sans';
   src: url('./assets/fonts/ProductSans-Regular.eot');
   src: local('Product Sans'), local('ProductSans-Regular'),
-      url('./assets/fonts/ProductSans-Regular.eot?#iefix') format('embedded-opentype'),
-      url('./assets/fonts/ProductSans-Regular.woff') format('woff'),
-      url('./assets/fonts/ProductSans-Regular.ttf') format('truetype');
+    url('./assets/fonts/ProductSans-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/ProductSans-Regular.woff') format('woff'),
+    url('./assets/fonts/ProductSans-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +26,7 @@
   padding: 0;
   margin: 0;
   color: var(--textColor);
-  font-family: "Product Sans", sans-serif;
+  font-family: 'Product Sans', sans-serif;
 }
 
 .App {

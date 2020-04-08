@@ -1,4 +1,6 @@
-
+:root {
+  --timerBackgroundColor: #4e3ba8;
+}
 .wrapper {
   width: 100%;
   max-width: 385px;
@@ -35,21 +37,20 @@
   justify-content: space-between;
   align-items: center;
 }
-.wrapper > div > div + div {
+
+.timer + div {
   margin-right: 75px;
   line-height: 25px;
 }
 
-.wrapper > div > div + svg {
-  margin-right: 28px;
-}
 
 .timer {
   width: 53px;
   height: 53px;
   border-radius: 50%;
-  background: #4e3ba8;
+  background: var(--timerBackgroundColor);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 28px;
 }

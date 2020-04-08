@@ -27,7 +27,7 @@ const FieldDefaultComponent = (
     id={DEFAULT_DATA.id}
     onChange={DEFAULT_DATA.onChange}
     required={DEFAULT_DATA.required}
-    errorText={DEFAULT_DATA.errorText}
+    error={DEFAULT_DATA.errorText}
     labelText={DEFAULT_DATA.labelText}
   />
 )

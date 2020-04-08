@@ -7,7 +7,7 @@ type FieldProps = {
   generalType?: generalFieldType
   labelText?: string
   withCircle?: boolean
-  errorText?: string
+  error?: string | boolean
   placeholder?: string
   name?: string
   id: string
@@ -20,7 +20,7 @@ export const Field: React.FC<FieldProps> = props => {
   const {
     generalType,
     labelText,
-    errorText,
+    error,
     placeholder,
     name,
     id,
@@ -37,7 +37,7 @@ export const Field: React.FC<FieldProps> = props => {
   return (
     <FieldWrapper
       htmlFor={id}
-      errorText={errorText}
+      error={error}
       labelText={labelText}
       withCircle={withCircle}
     >

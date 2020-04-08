@@ -1,37 +1,47 @@
 import React from 'react'
+import { ErrorIcon } from '../../assets/icons'
 import styles from './Field.module.css'
 
 type FieldWrapperProps = {
   children?: React.ReactNode
   labelText?: string
   withCircle?: boolean
-  errorText?: string
+  error?: string | boolean
   htmlFor?: string
 }
 
 export const FieldWrapper: React.FC<FieldWrapperProps> = props => {
-  const { children, labelText, errorText, htmlFor, withCircle } = props
-  const classes = [styles.Field]
+  const { children, labelText, error, htmlFor, withCircle } = props
+  const containerClass = [styles.Field]
+  const labelClass = [styles.FieldLabelDefault]
 
-  //TODO
-  if (errorText) {
-    //classes.push(styles.invalid)
+  if (error) {
+    containerClass.push(styles.invalid)
+    labelClass.push(styles.invalid)
   }
+
   return (
     <>
-      <div className={classes.join(' ')}>
-        {children}
-        {labelText ? (
-          <label htmlFor={htmlFor}>{labelText}</label>
-        ) : (
-          withCircle && (
-            <label className={styles.FieldLabelDefault} htmlFor={htmlFor}>
-              <div />
-            </label>
-          )
-        )}
+      <div className={containerClass.join(' ')}>
+        <div>
+          {children}
+          {labelText ? (
+            <label htmlFor={htmlFor}>{labelText}</label>
+          ) : (
+            withCircle && (
+              <label className={labelClass.join(' ')} htmlFor={htmlFor}>
+                <div />
+              </label>
+            )
+          )}
+          {typeof error === 'boolean' ? (
+            <div className={styles.iconWrapper}>
+              <ErrorIcon />
+            </div>
+          ) : null}
+        </div>
       </div>
-      {errorText && <span>{errorText}</span>}
+      {typeof error === 'string' && <span>{error}</span>}
     </>
   )
 }

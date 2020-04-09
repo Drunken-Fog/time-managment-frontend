@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './EnterFromSocialMedia.module.css'
-import { ReactComponent as Google } from '../../assets/images/google.svg'
-import { ReactComponent as Vk } from '../../assets/images/vk.svg'
+import { Google, Vk } from '../../assets/images'
 
 export const EnterFromSocialMedia: React.FC = () => {
   return (

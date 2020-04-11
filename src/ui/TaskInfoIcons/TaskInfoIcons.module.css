@@ -1,0 +1,43 @@
+:root {
+  --iconFillSuccess: #85d5d4;
+  --iconFillWarning: #ff7a7a;
+  --iconFillInProgress: #87b8f5;
+}
+
+.wrapper {
+  max-width: 65px;
+  min-height: 31px;
+  min-width: fit-content;
+  border-radius: 28px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+.standAlone {
+  width: 38px;
+}
+
+.success,
+.success svg path {
+  background-color: var(--backgroundColorSuccess);
+  fill: var(--iconFillSuccess);
+}
+
+.warning,
+.warning svg path {
+  background-color: var(--backgroundColorDanger);
+  fill: var(--iconFillWarning);
+}
+
+.inProgress,
+.inProgress svg path {
+  background-color: var(--backgroundColorInProgress);
+  fill: var(--iconFillInProgress);
+}

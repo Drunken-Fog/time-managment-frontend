@@ -4,6 +4,9 @@
   --primary: #7b65e8;
   --danger: #ff7a7a;
   --white: #fff;
+  --backgroundColorSuccess: #e0f5f4;
+  --backgroundColorDanger: rgba(255, 122, 122, 0.3);
+  --backgroundColorInProgress: #e3effd;
   --borderRadius: 5px;
   --disabled: 0.7;
   --silver: #f5f5f5;

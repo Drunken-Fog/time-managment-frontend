@@ -1,0 +1,32 @@
+.wrapper {
+  width: 480px;
+  height: 538px;
+}
+
+.wrapper > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -54px;
+}
+
+.stats {
+  display: flex;
+  font-size: 22px;
+}
+.stats > svg {
+  padding-top: 17px;
+  padding-left: 10px;
+}
+.stats > div {
+  padding-top: 23px;
+}
+
+.lineWrapper {
+  width: 80%;
+}
+
+h2 {
+  font-size: 29px;
+  margin: 15px 0px;
+}

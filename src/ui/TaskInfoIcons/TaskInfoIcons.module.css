@@ -2,6 +2,9 @@
   --iconFillSuccess: #85d5d4;
   --iconFillWarning: #ff7a7a;
   --iconFillInProgress: #87b8f5;
+  --backgroundColorSuccess: #e0f5f4;
+  --backgroundColorWarning: rgba(255, 122, 122, 0.3);
+  --backgroundColorInProgress: #e3effd;
 }
 
 .wrapper {
@@ -32,7 +35,7 @@
 
 .warning,
 .warning svg path {
-  background-color: var(--backgroundColorDanger);
+  background-color: var(--backgroundColorWarning);
   fill: var(--iconFillWarning);
 }
 

@@ -1,5 +1,5 @@
 :root {
-  --buttonShadow: 0px 4px 20px rgba(123, 101, 232, 0.5);
+  --buttonShadow: 0px 4px 20px;
   --buttonPadding: 16px;
   --buttonFontSize: 17px;
 }
@@ -19,11 +19,41 @@
 }
 
 .button:hover {
-  box-shadow: var(--buttonShadow);
+  box-shadow: var(--buttonShadow) var(--primaryRGBA);
 }
 
-.button:disabled {
+.primary {
+  background: var(--primary);
+}
+
+.primary:hover {
+  box-shadow: var(--buttonShadow) var(--primaryRGBA);
+}
+
+.danger {
+  background: var(--danger);
+}
+
+.danger:hover {
+  box-shadow: var(--buttonShadow) var(--dangerRGBA);
+}
+
+.button:disabled, .primary:disabled, .danger:disabled {
   opacity: var(--disabled);
   box-shadow: none;
   cursor: not-allowed;
+}
+
+.small {
+  width: auto;
+  padding: 7px 20px;
+  font-size: 12px;
+}
+
+.large {
+  width: 211px;
+}
+
+.fluid {
+  width: 100%;
 }

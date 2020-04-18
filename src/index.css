@@ -3,6 +3,8 @@
   --secondTextColor: #9f9f9f;
   --primary: #7b65e8;
   --danger: #ff7a7a;
+  --primaryRGBA: rgba(123, 101, 232, .5);
+  --dangerRGBA: rgba(255, 122, 122, .5);
   --white: #fff;
   --backgroundColorSuccess: #e0f5f4;
   --backgroundColorDanger: rgba(255, 122, 122, 0.3);

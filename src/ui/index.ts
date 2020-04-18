@@ -1,6 +1,7 @@
 export * from './Button'
 export * from './Field'
 export * from './ProgressLine'
+export * from './ProgressCircle'
 export * from './FormBox'
 export * from './Notification'
 export * from './TaskInfoIcons'

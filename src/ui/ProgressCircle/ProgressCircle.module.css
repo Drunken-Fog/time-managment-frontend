@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+}
+
+.backgroundCircle {
+  stroke: var(--silver);
+}
+
+.circle {
+  position: relative;
+  stroke: var(--primary);
+  transform-origin: center;
+  transform: rotate(91deg) scale(-1, 1);  
+}
+
+.text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  fill: var(--primary);
+  font-size: 27px;
+  line-height: 32px;
+}

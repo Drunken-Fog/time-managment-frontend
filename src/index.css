@@ -13,6 +13,7 @@
   --disabled: 0.7;
   --silver: #f5f5f5;
   --tabletSize: 768px;
+  --boxShadow: 0px 0px 10px var(--primary)
 }
 
 @font-face {

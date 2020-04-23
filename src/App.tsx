@@ -1,15 +1,13 @@
 import React from 'react'
-import { FormBox } from './ui'
-import { FormAuth, EnterFromSocialMedia } from './components'
+import { BrowserRouter } from 'react-router-dom'
+import { useRoutes } from './routes'
 
 const App: React.FC = () => {
+  const routes = useRoutes(false)
+
   return (
     <div className='App'>
-      <FormBox
-        title='Вход'
-        form={<FormAuth />}
-        bottom={<EnterFromSocialMedia />}
-      />
+      <BrowserRouter>{routes}</BrowserRouter>
     </div>
   )
 }

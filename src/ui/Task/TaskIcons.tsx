@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './TaskInfoIcons.module.css'
+import styles from './TaskIcons.module.css'
 import { ErrorIcon, Timer } from '../../assets/icons'
 import { taskStatus } from '../../types'
 import cn from 'classnames'

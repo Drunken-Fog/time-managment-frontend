@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './Subtext.module.css'
 
 type Props = {
@@ -11,7 +12,7 @@ export const Subtext: React.FC<Props> = props => {
   const { text, link, linkTitle } = props
   return (
     <p className={styles.text}>
-      {text} <a href={link}>{linkTitle}</a>
+      {text} <NavLink to={link}>{linkTitle}</NavLink>
     </p>
   )
 }

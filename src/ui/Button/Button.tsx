@@ -4,6 +4,7 @@ import cn from 'classnames'
 
 type ButtonType = 'primary' | 'danger'
 type ButtonSize = 'fluid' | 'small' | 'large'
+type GeneralType = 'button' | 'submit' | 'reset'
 
 type ButtonProps = {
   children?: React.ReactNode
@@ -13,6 +14,7 @@ type ButtonProps = {
   width?: number | string
   type?: ButtonType
   size?: ButtonSize
+  generalType?: GeneralType
 }
 
 export const Button: React.FC<ButtonProps> = props => {
@@ -24,10 +26,12 @@ export const Button: React.FC<ButtonProps> = props => {
     width,
     type = 'primary',
     size = 'fluid',
+    generalType,
   } = props
 
   return (
     <button
+      type={generalType}
       className={cn(styles.button, styles[type], styles[size])}
       id={id}
       onClick={onClick}

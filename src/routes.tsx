@@ -1,10 +1,10 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { AuthPage } from './pages'
+import { LoginPage, RegistrationPage } from './pages'
 
-type RoutesProps = boolean
+type Props = boolean
 
-export const useRoutes: React.FC<RoutesProps> = isAuth => {
+export const useRoutes: React.FC<Props> = isAuth => {
   if (isAuth) {
     return (
       <Switch>
@@ -15,7 +15,8 @@ export const useRoutes: React.FC<RoutesProps> = isAuth => {
   }
   return (
     <Switch>
-      <Route path='/login' component={AuthPage} exact />
+      <Route path='/login' component={LoginPage} exact />
+      <Route path='/registration' component={RegistrationPage} exact />
       <Redirect to='/login' />
     </Switch>
   )

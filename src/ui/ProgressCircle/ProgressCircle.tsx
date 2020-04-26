@@ -5,10 +5,11 @@ type ProgressCircleProps = {
   size?: number
   value?: number
   max?: number
+  level?: number
 }
 
 export const ProgressCircle: React.FC<ProgressCircleProps> = props => {
-  const { size = 60, value = 73, max = 100 } = props
+  const { size = 60, value = 0, max = 100, level = 0 } = props
 
   const radius = size / 2 - 10
   const circumference = 2 * Math.PI * radius
@@ -82,7 +83,7 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = props => {
           x={size}
           y={size + 2}
         >
-          3
+          {level}
         </text>
       </svg>
     </div>

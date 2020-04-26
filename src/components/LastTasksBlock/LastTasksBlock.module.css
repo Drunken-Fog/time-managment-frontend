@@ -1,0 +1,43 @@
+.block {
+  background: white;
+  max-width: 50%;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: var(--darkColor)
+}
+
+.account, .title {
+  padding: 20px 86px;
+}
+
+.tasks {
+  background: rgba(201, 205, 236, 0.1);
+  border-radius: var(--borderRadius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.tasks button {
+  margin: 20px 0;
+}
+
+.list {
+  box-sizing: border-box;
+  max-height: 420px;
+  width: 100%;
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+.buttons button{
+ margin-left: 24px;
+ margin-right: 24px;
+}

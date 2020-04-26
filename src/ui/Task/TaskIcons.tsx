@@ -6,42 +6,42 @@ import cn from 'classnames'
 
 export type TaskIconsProps = {
   status?: taskStatus
-  urgently?: boolean | string
+  urgent?: boolean | string
   important?: boolean | string
 }
 
 export const TaskIcons: React.FC<TaskIconsProps> = props => {
-  const { status, urgently, important } = props
+  const { status, urgent, important } = props
 
-  const hasNotIcons = !urgently && !important
+  const hasNotIcons = !urgent && !important
 
   if (hasNotIcons) {
     return null
   }
 
   function renderIcons(
-    urgently: boolean | string | undefined,
+    urgent: boolean | string | undefined,
     important: boolean | string | undefined
   ): React.ReactNode {
-    if (urgently && important) {
+    if (urgent && important) {
       return (
         <>
           <Timer />
           <ErrorIcon />
         </>
       )
-    } else if (urgently) {
+    } else if (urgent) {
       return <Timer />
     }
     return <ErrorIcon />
   }
 
-  const isIconAlone = !urgently || !important
+  const isIconAlone = !urgent || !important
   const classes = cn(
     styles.wrapper,
     styles[status!],
     isIconAlone && styles.standAlone
   )
 
-  return <div className={classes}>{renderIcons(urgently, important)}</div>
+  return <div className={classes}>{renderIcons(urgent, important)}</div>
 }

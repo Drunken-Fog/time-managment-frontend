@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { Field } from '../../ui'
 import { Form } from '../Form'
 import {
@@ -7,8 +8,18 @@ import {
   FormRegistrationSpecific,
 } from '../../constants'
 import { validateName, validateEmail, validatePassword } from '../../utils/'
+import { userRegistration } from '../../store/app/actions'
 
 export const FormRegistration: React.FC = () => {
+  const dispatch = useDispatch()
+
+  const registration = useCallback(
+    arg => {
+      dispatch(userRegistration(arg))
+    },
+    [dispatch]
+  )
+
   return (
     <>
       <div
@@ -17,6 +28,7 @@ export const FormRegistration: React.FC = () => {
         }}
       >
         <Form
+          onSubmit={registration}
           id={FormRegistrationSpecific.id}
           actionText={FormRegistrationSpecific.actionText}
           subText={FormRegistrationSpecific.subText}

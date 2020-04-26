@@ -1,0 +1,23 @@
+:root {
+  --modalWrapperBackground: rgba(38, 50, 56, 0.25);
+  --modalBoxShadow: 0px 4px 40px rgba(123, 101, 232, 0.1);
+}
+
+.wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: var(--modalWrapperBackground);
+  z-index: 9999999;
+}
+
+.modal {
+  background: var(--white);
+  box-shadow: var(--modalBoxShadow);
+  border-radius: var(--borderRadius);
+}

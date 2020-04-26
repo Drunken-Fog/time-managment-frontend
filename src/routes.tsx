@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { AuthPage } from './pages'
+import { BuildingPage } from './pages'
 
 type RoutesProps = boolean
 

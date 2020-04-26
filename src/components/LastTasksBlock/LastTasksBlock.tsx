@@ -11,7 +11,7 @@ type LastTasksBlockProps = {
 
 export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
   const { user, tasks } = props
-  const hasTasks = Boolean(tasks.length)
+  const hasTasks = tasks && tasks.length
 
   return (
     <div className={styles.block}>

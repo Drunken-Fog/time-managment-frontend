@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { LoginPage, RegistrationPage } from './pages'
+import { HomePage, LoginPage, RegistrationPage } from './pages'
 
 type Props = boolean
 
@@ -8,7 +8,7 @@ export const useRoutes: React.FC<Props> = isAuth => {
   if (isAuth) {
     return (
       <Switch>
-        <Route path='/home' component={() => <h1>HOME</h1>} />
+        <Route path='/home' component={HomePage} />
         <Redirect to='/home' />
       </Switch>
     )

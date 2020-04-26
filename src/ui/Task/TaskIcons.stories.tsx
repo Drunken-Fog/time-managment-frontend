@@ -6,9 +6,9 @@ export default { title: 'TaskInfoIcons', component: TaskIcons }
 export const StatusColors = function() {
   return (
     <>
-      <TaskIcons status='success' urgently important />
-      <TaskIcons status='danger' urgently important />
-      <TaskIcons status='inProgress' urgently important />
+      <TaskIcons status='active' urgent important />
+      <TaskIcons status='stopped' urgent important />
+      <TaskIcons status='completed' urgent important />
     </>
   )
 }
@@ -16,8 +16,8 @@ export const StatusColors = function() {
 export const StandAlone = function() {
   return (
     <>
-      <TaskIcons status='success' urgently />
-      <TaskIcons status='success' important />
+      <TaskIcons status='active' urgent />
+      <TaskIcons status='completed' important />
     </>
   )
 }

@@ -26,20 +26,20 @@
   width: 38px;
 }
 
-.success,
-.success svg path {
+.compeleted,
+.compeleted svg path {
   background-color: var(--backgroundColorSuccess);
   fill: var(--iconFillSuccess);
 }
 
-.danger,
-.danger svg path {
+.stopped,
+.stopped svg path {
   background-color: var(--backgroundColorWarning);
   fill: var(--iconFillWarning);
 }
 
-.inProgress,
-.inProgress svg path {
+.active,
+.active svg path {
   background-color: var(--backgroundColorInProgress);
   fill: var(--iconFillInProgress);
 }

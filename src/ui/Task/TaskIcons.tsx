@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './TaskIcons.module.css'
 import { ErrorIcon, Timer } from '../../assets/icons'
-import { taskStatus } from '../../types'
+import { TaskStatus } from '../../types'
 import cn from 'classnames'
 
 export type TaskIconsProps = {
-  status?: taskStatus
+  status?: TaskStatus
   urgent?: boolean | string
   important?: boolean | string
 }

@@ -4,6 +4,7 @@ import { FieldWrapper } from './FieldWrapper'
 type generalFieldType = 'text' | 'email' | 'password'
 
 type FieldProps = {
+  className?: string
   generalType?: generalFieldType
   labelText?: string
   withCircle?: boolean
@@ -28,6 +29,7 @@ export const Field: React.FC<FieldProps> = props => {
     disabled,
     onChange,
     withCircle,
+    className,
   } = props
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -36,6 +38,7 @@ export const Field: React.FC<FieldProps> = props => {
 
   return (
     <FieldWrapper
+      className={className}
       htmlFor={id}
       error={error}
       labelText={labelText}

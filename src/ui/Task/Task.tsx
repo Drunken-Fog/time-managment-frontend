@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './Task.module.css'
 import { TaskIcons, TaskIconsProps } from './TaskIcons'
 import { TaskStatusLine } from './TaskStatusLine'
-import { taskStatus } from '../../types'
+import { TaskStatus } from '../../types'
 
 type TaskProps = {
   name: string
-  status: taskStatus
+  status: TaskStatus
 }
 
 export const Task: React.FC<TaskProps & TaskIconsProps> = props => {

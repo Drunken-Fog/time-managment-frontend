@@ -11,6 +11,8 @@ type FormState = { [k: string]: string }
 type Props = {
   children: React.ReactElement[]
   id: string
+  // TODO TYPE
+  onSubmit?: any
   actionText: string
   subText: string
   subTextLink: string
@@ -21,6 +23,7 @@ export const Form: React.FC<Props> = props => {
   const {
     children,
     id,
+    onSubmit,
     actionText,
     subText,
     subTextLink,
@@ -28,7 +31,6 @@ export const Form: React.FC<Props> = props => {
   } = props
   const validators: Validators = {}
   const initialFormState: FormState = {}
-
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [formState, setFormState] = useState<FormState>(initialFormState)
 
@@ -37,10 +39,6 @@ export const Form: React.FC<Props> = props => {
 
   //   Для поля
   const [fieldErrors, setFieldErrors] = useState<FieldErrorsState>({})
-
-  function handleFieldChange(name: string, value: string) {
-    setFormState({ ...formState, [name]: value })
-  }
 
   function handleChildren(child: ReactElement) {
     const { name, validate } = child.props
@@ -53,7 +51,25 @@ export const Form: React.FC<Props> = props => {
     handleChildren(child)
   })
 
-  function handleSubmit(event: React.SyntheticEvent): void {
+  function handleFieldChange(name: string, value: string) {
+    setFormState({ ...formState, [name]: value })
+  }
+
+  async function submitField() {
+    setIsSubmitting(true)
+    try {
+      // TODO не дожидается...
+      await onSubmit(formState)
+
+      setFormState(initialFormState)
+      setIsSubmitting(false)
+    } catch (e) {
+      setFormErrorText('Произошла неизвестная ошибка')
+      setIsSubmitting(false)
+    }
+  }
+
+  function handleSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
 
     setFormErrorText(null)
@@ -63,17 +79,6 @@ export const Form: React.FC<Props> = props => {
     setFieldErrors(errors || {})
 
     submitField()
-  }
-
-  async function submitField() {
-    setIsSubmitting(true)
-    try {
-      setFormState(initialFormState)
-      setIsSubmitting(false)
-    } catch (e) {
-      setFormErrorText('Произошла неизвестная ошибка')
-      setIsSubmitting(false)
-    }
   }
 
   function renderField(child: ReactElement): ReactElement {
@@ -112,7 +117,7 @@ export const Form: React.FC<Props> = props => {
       <div style={{ marginRight: ' 90px' }}>
         {/* TODO: Для теста */}
         {formErrorText || null}
-        <Button width={211} disabled={isSubmitting}>
+        <Button width={211} disabled={isSubmitting} generalType='submit'>
           {actionText}
         </Button>
         <Subtext

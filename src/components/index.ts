@@ -1,3 +1,4 @@
+export * from './CreateTaskModal'
 export * from './FormAuth'
 export * from './FormReg'
 export * from './EnterFromSocialMedia'

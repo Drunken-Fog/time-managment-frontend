@@ -9,6 +9,7 @@ import {
   fetchTasksSuccess,
   taskCreateSuccess,
   toggleCreateTaskModal,
+  resetTokensInStore,
 } from './actions'
 
 function* registrationWatcher() {
@@ -172,6 +173,32 @@ async function createTask(data: any) {
   return response
 }
 
+function* logoutWatcher() {
+  yield takeEvery(appTypes.LOGOUT_START, logoutWorker)
+}
+
+function* logoutWorker() {
+  yield call(logout)
+  yield removeTokens()
+  yield put(resetTokensInStore())
+}
+
+async function logout() {
+  const refresh_token = localStorage.getItem('REFRESH_TOKEN')
+  await request({
+    url: 'https://time-management-sfedu.herokuapp.com/users/logout',
+    method: 'POST',
+    data: {
+      refresh_token,
+    },
+  })
+}
+
+function removeTokens() {
+  localStorage.removeItem('ACCESS_TOKEN')
+  localStorage.removeItem('REFRESH_TOKEN')
+}
+
 export default function* app() {
   yield all([
     fork(registrationWatcher),
@@ -180,5 +207,6 @@ export default function* app() {
     fork(fetchProfileWatcher),
     fork(fetchTasksWatcher),
     fork(createTaskWatcher),
+    fork(logoutWatcher),
   ])
 }

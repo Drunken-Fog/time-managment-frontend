@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './CreateTaskModal.module.css'
 import { Modal } from '../../ui/Modal'
-import { Field, Button } from '../../ui'
+import { Field, Button, Checkbox } from '../../ui'
 
 type CreateTaskModalProps = {
   modalIsOpen: boolean
@@ -60,20 +60,18 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = props => {
           placeholder='Описание задачи'
         />
         <div className={styles.checkboxes}>
-          <input
-            onClick={() => setTaskImportant(!taskImportant)}
-            type='checkbox'
-            name='important'
+          <Checkbox
             id='important'
+            name='important'
+            labelText='Важная'
+            onClick={() => setTaskImportant(!taskImportant)}
           />
-          <label htmlFor='important'>Важная</label>
-          <input
-            onClick={() => setTaskUrgent(!taskUrgent)}
-            type='checkbox'
-            name='urgent'
+          <Checkbox
             id='urgent'
+            name='urgent'
+            labelText='Срочная'
+            onClick={() => setTaskUrgent(!taskUrgent)}
           />
-          <label htmlFor='urgent'>Срочная</label>
         </div>
         <div className={styles.buttons}>
           <Button width='47%' onClick={submitHandler}>

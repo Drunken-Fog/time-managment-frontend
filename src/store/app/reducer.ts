@@ -101,6 +101,14 @@ const appReducer: Reducer<any> = (state = initialState, action) => {
         loading: false,
       }
     }
+    case appTypes.RESET_TOKENS: {
+      return {
+        ...state,
+        isAuth: false,
+        ACCESS_TOKEN: null,
+        REFRESH_TOKEN: null,
+      }
+    }
     default:
       return state
   }

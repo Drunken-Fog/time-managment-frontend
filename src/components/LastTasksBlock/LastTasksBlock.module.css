@@ -6,6 +6,7 @@
 .account {
   display: flex;
   align-items: center;
+  justify-content: space-between;
     font-size: 35px;
     width: 80%;
     margin: 10px auto;
@@ -46,4 +47,16 @@
 .buttons button{
  margin-left: 24px;
  margin-right: 24px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.logout {
+  display: block;
+  cursor: pointer;
+  text-align: right;
+  color: var(--primary);
 }

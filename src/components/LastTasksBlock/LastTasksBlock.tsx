@@ -1,8 +1,10 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useCallback } from 'react'
 import styles from './LastTasksBlock.module.css'
 import { ProgressCircle, Task, Button } from '../../ui'
 import { NoTasksImage } from '../../assets/images'
 import { UserType, TaskType } from '../../types'
+import { logoutStart } from '../../store/app/actions'
+import { useDispatch } from 'react-redux'
 
 type LastTasksBlockProps = {
   user: UserType
@@ -11,6 +13,10 @@ type LastTasksBlockProps = {
 }
 
 export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
+  const dispatch = useDispatch()
+  const logout = useCallback(() => {
+    dispatch(logoutStart())
+  }, [dispatch])
   const { user, tasks, toggleModal } = props
   const hasTasks = tasks && tasks.length
 
@@ -21,12 +27,17 @@ export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
   return (
     <div className={styles.block}>
       <div className={styles.account}>
-        <ProgressCircle
-          max={user.levelStars}
-          value={user.stars}
-          level={user.level}
-        />
-        {user.username}
+        <div className={styles.user}>
+          <ProgressCircle
+            max={user.levelStars}
+            value={user.stars}
+            level={user.level}
+          />
+          {user.username}
+        </div>
+        <div className={styles.logout} onClick={logout}>
+          Выйти
+        </div>
       </div>
       <h1 className={styles.title}>Последние задачи</h1>
       <div className={styles.tasks}>

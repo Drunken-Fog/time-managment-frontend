@@ -186,3 +186,15 @@ export function taskCreateSuccess() {
     type: appTypes.CREATE_TASK_SUCCESS,
   }
 }
+
+export function logoutStart(): { type: appTypes } {
+  return {
+    type: appTypes.LOGOUT_START,
+  }
+}
+
+export function resetTokensInStore(): { type: appTypes } {
+  return {
+    type: appTypes.RESET_TOKENS,
+  }
+}

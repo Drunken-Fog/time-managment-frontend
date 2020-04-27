@@ -5,11 +5,11 @@ type CheckboxProps = {
   id: string
   labelText?: string
   name?: string
-  onChange?: (event: React.SyntheticEvent) => void
+  onClick?: (event: React.SyntheticEvent) => void
 }
 
 export const Checkbox: React.FC<CheckboxProps> = props => {
-  const { id, labelText, name, onChange } = props
+  const { id, labelText, name, onClick } = props
   return (
     <div className={styles.checkbox}>
       <input
@@ -17,7 +17,7 @@ export const Checkbox: React.FC<CheckboxProps> = props => {
         type='checkbox'
         name={name}
         id={id}
-        onChange={onChange}
+        onClick={onClick}
       />
       <label className={styles.label} htmlFor={id} />
       {labelText}

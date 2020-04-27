@@ -7,11 +7,16 @@ import { UserType, TaskType } from '../../types'
 type LastTasksBlockProps = {
   user: UserType
   tasks: TaskType[]
+  toggleModal: (arg0: boolean) => void
 }
 
 export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
-  const { user, tasks } = props
+  const { user, tasks, toggleModal } = props
   const hasTasks = tasks && tasks.length
+
+  function openModal() {
+    toggleModal(true)
+  }
 
   return (
     <div className={styles.block}>
@@ -25,7 +30,11 @@ export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
       </div>
       <h1 className={styles.title}>Последние задачи</h1>
       <div className={styles.tasks}>
-        {hasTasks ? <TasksBlock tasks={tasks} /> : <NoTasksBlock />}
+        {hasTasks ? (
+          <TasksBlock tasks={tasks} openModal={openModal} />
+        ) : (
+          <NoTasksBlock openModal={openModal} />
+        )}
       </div>
     </div>
   )
@@ -33,14 +42,16 @@ export const LastTasksBlock: React.FC<LastTasksBlockProps> = props => {
 
 type TasksBlockProps = {
   tasks: TaskType[]
+  openModal?: () => void
 }
 
 const TasksBlock: React.FC<TasksBlockProps> = props => {
-  const { tasks } = props
+  const { tasks, openModal } = props
+
   function renderTasks(tasks: TaskType[]): ReactNode {
     return tasks.map(task => (
       <Task
-        key={task.name}
+        key={`${task.name}/${task.name + Math.random()} `}
         status={task.status}
         name={task.name}
         urgent={task.urgent}
@@ -54,16 +65,27 @@ const TasksBlock: React.FC<TasksBlockProps> = props => {
       <div className={styles.list}>{renderTasks(tasks)}</div>
       <div className={styles.buttons}>
         <Button size='small'>Список задач</Button>
-        <Button size='small'>Добавить</Button>
+        <Button size='small' onClick={openModal}>
+          Добавить
+        </Button>
       </div>
     </>
   )
 }
 
-const NoTasksBlock: React.FC = () => (
-  <>
-    <NoTasksImage />
-    <div>Создайте свою первую задачу!</div>
-    <Button size='large'>Добавить</Button>
-  </>
-)
+type NoTasksBlockProps = {
+  openModal?: () => void
+}
+
+const NoTasksBlock: React.FC<NoTasksBlockProps> = props => {
+  const { openModal } = props
+  return (
+    <>
+      <NoTasksImage />
+      <div>Создайте свою первую задачу!</div>
+      <Button size='large' onClick={openModal}>
+        Добавить
+      </Button>
+    </>
+  )
+}

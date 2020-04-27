@@ -1,4 +1,5 @@
 import { appTypes } from './types'
+import app from './sagas'
 
 type UserRegistrationData = {
   name: string
@@ -163,5 +164,25 @@ export function fetchTasksSuccess(
   return {
     type: appTypes.FETCH_TASKS_SUCCESS,
     payload: data,
+  }
+}
+
+// CREATE TASK MODAL TOGGLE
+export function toggleCreateTaskModal(
+  isOpen: boolean
+): { type: appTypes; payload: boolean } {
+  return {
+    type: appTypes.TOGGLE_CREATE_TASK_MODAL,
+    payload: isOpen,
+  }
+}
+
+export function taskCreate(uid: string, data: any) {
+  return { type: appTypes.CREATE_TASK_START, payload: { uid, ...data } }
+}
+
+export function taskCreateSuccess() {
+  return {
+    type: appTypes.CREATE_TASK_SUCCESS,
   }
 }

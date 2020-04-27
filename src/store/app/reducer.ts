@@ -1,6 +1,7 @@
 import { Reducer } from 'redux'
 import { appTypes } from './types'
 import app from './sagas'
+import { StaticReadUsage } from 'three'
 
 const REFRESH_TOKEN = localStorage.getItem('REFRESH_TOKEN')
 const ACCESS_TOKEN = localStorage.getItem('ACCESS_TOKEN')
@@ -20,6 +21,7 @@ const initialState = {
   levelStars: null,
   stars: null,
   tasks: {},
+  createTaskModalIsOpen: false,
 }
 
 // TODO Type
@@ -55,7 +57,7 @@ const appReducer: Reducer<any> = (state = initialState, action) => {
     case appTypes.FETCH_TASKS_SUCCESS: {
       return {
         ...state,
-        tasks: action.payload.data,
+        tasks: action.payload,
       }
     }
     case appTypes.USER_LOGIN_START: {
@@ -75,6 +77,28 @@ const appReducer: Reducer<any> = (state = initialState, action) => {
         isAuth: true,
         ACCESS_TOKEN: action.payload.access_token,
         REFRESH_TOKEN: action.payload.refresh_token,
+      }
+    }
+
+    case appTypes.TOGGLE_CREATE_TASK_MODAL: {
+      return {
+        ...state,
+        loading: true,
+        createTaskModalIsOpen: action.payload,
+      }
+    }
+
+    case appTypes.CREATE_TASK_START: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+
+    case appTypes.CREATE_TASK_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
       }
     }
     default:

@@ -12,9 +12,9 @@
 }
 
 .building {
-    border: 5px solid #7B65E8;
+    /* border: 5px solid #7B65E8; */
     border-radius: 10px;
     width: fit-content;
-    box-shadow: 0px 0px 10px 15px #C9CDEC20;
+    /* box-shadow: 0px 0px 10px 15px #C9CDEC20; */
     margin: 0px auto;
 }

@@ -1,19 +1,20 @@
 import { takeEvery, all, fork, put, call } from 'redux-saga/effects'
-import axios from 'axios'
+import request from '../../utils/request'
 import { appTypes } from './types'
-import { userRegistration } from './actions'
+import { routerHistory } from '../../utils/history'
+import { userLoginSuccess } from './actions'
 
-function* watcher() {
-  yield takeEvery(appTypes.USER_REGISTRATION_START, worker)
+function* registrationWatcher() {
+  yield takeEvery(appTypes.USER_REGISTRATION_START, registrationWorker)
 }
 
-function* worker({ payload }: any) {
+function* registrationWorker({ payload }: any) {
   try {
     const response = yield call(registration, payload)
+    routerHistory.push('/login')
     if (response instanceof Error) {
       // TODO: отправить ошибку в стор
     }
-    yield put(userRegistration(response))
   } catch (e) {
     console.log(e)
   }
@@ -23,22 +24,41 @@ function* worker({ payload }: any) {
 async function registration(data: any) {
   const { name, email, password } = data
   try {
-    const response = await axios(
-      'https://time-management-sfedu.herokuapp.com/users/registration',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          Accept: 'application/json',
-        },
-        data: {
-          username: name,
-          email: email,
-          password: password,
-        },
-      }
-    )
+    const response = await request({
+      url: 'https://time-management-sfedu.herokuapp.com/users/registration',
+      method: 'POST',
+      data: {
+        username: name,
+        email: email,
+        password: password,
+      },
+    })
+    return response
+  } catch (e) {
+    return new Error('Что-то пошло не так')
+  }
+}
+
+function* loginWatcher() {
+  yield takeEvery(appTypes.USER_LOGIN_START, loginWorker)
+}
+
+function* loginWorker({ payload }: any) {
+  const response = yield call(login, payload)
+  yield put(userLoginSuccess(response))
+}
+
+async function login(data: any) {
+  const { email, password } = data
+  try {
+    const response = await request({
+      url: 'https://time-management-sfedu.herokuapp.com/users/login',
+      method: 'POST',
+      data: {
+        password,
+        email,
+      },
+    })
     return response
   } catch (e) {
     return new Error('Что-то пошло не так')
@@ -46,5 +66,5 @@ async function registration(data: any) {
 }
 
 export default function* app() {
-  yield all([fork(watcher)])
+  yield all([fork(registrationWatcher), fork(loginWatcher)])
 }

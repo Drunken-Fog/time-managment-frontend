@@ -13,6 +13,7 @@ import { userRegistration } from '../../store/app/actions'
 export const FormRegistration: React.FC = () => {
   const dispatch = useDispatch()
 
+  // TODO: отправляет форму, даже если пустые поля
   const registration = useCallback(
     arg => {
       dispatch(userRegistration(arg))

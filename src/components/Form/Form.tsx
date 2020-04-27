@@ -57,10 +57,9 @@ export const Form: React.FC<Props> = props => {
 
   async function submitField() {
     setIsSubmitting(true)
-    try {
-      // TODO не дожидается...
-      await onSubmit(formState)
 
+    try {
+      await onSubmit(formState)
       setFormState(initialFormState)
       setIsSubmitting(false)
     } catch (e) {
@@ -78,7 +77,9 @@ export const Form: React.FC<Props> = props => {
 
     setFieldErrors(errors || {})
 
-    submitField()
+    if (Object.keys(errors).length === 0) {
+      submitField()
+    }
   }
 
   function renderField(child: ReactElement): ReactElement {
@@ -101,6 +102,7 @@ export const Form: React.FC<Props> = props => {
           validate(value)
           setFieldErrors((errors: FieldErrorsState) => {
             const { [name]: omitted, ...rest } = errors
+
             return rest
           })
         } catch (e) {

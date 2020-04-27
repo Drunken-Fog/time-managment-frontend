@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { Field } from '../../ui'
 import { Form } from '../Form'
 import {
@@ -7,8 +8,19 @@ import {
   FormLoginSpecific,
 } from '../../constants'
 import { validateEmail, validatePassword } from '../../utils/'
+import { userLogin } from '../../store/app/actions'
 
 export const FormLogin: React.FC = () => {
+  const dispatch = useDispatch()
+
+  // TODO: отправляет форму, даже если пустые поля
+  const login = useCallback(
+    arg => {
+      dispatch(userLogin(arg))
+    },
+    [dispatch]
+  )
+
   return (
     <>
       <div
@@ -18,6 +30,7 @@ export const FormLogin: React.FC = () => {
       >
         <Form
           id={FormLoginSpecific.id}
+          onSubmit={login}
           actionText={FormLoginSpecific.actionText}
           subText={FormLoginSpecific.subText}
           subTextLink={FormLoginSpecific.subTextLink}

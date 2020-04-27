@@ -6,7 +6,7 @@ type Props = {
   level: string | number
   currentStars: string | number
   totalStars: string | number
-  progressImage: React.ReactNode
+  progressImage?: React.ReactNode
   progressLine: React.ReactNode
 }
 

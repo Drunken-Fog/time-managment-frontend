@@ -1,7 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
+// TODO: поправить
 import { select } from 'redux-saga/effects'
+import { refreshTokenStart } from '../store/app/actions'
+import { useDispatch } from 'react-redux'
+import { store } from '../index'
 
-const getAppReducer = (state: any) => state.appReducer
+// const dispatch = useDispatch()
 
 interface AxiosConfig {
   method: string
@@ -48,12 +52,8 @@ service.interceptors.request.use(
       'Access-Control-Allow-Origin': '*',
       Accept: 'application/json',
     }
-    //@ts-ignore
-    const state = select(getAppReducer)
-    // console.log(state)
-    //@ts-ignore
 
-    const token = state.ACCESS_TOKEN
+    const token = localStorage.getItem('ACCESS_TOKEN')
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }
@@ -65,15 +65,12 @@ service.interceptors.request.use(
   }
 )
 
-// async function refreshToken() {
-//   return new Promise((resolve, _) => {
-//     store.dispatch('user/RefreshToken').then(() => {
-//       resolve()
-//     }).catch(() => {
-//       router.push({path: '/login'})
-//     })
-//   })
-// }
+async function refreshToken() {
+  return new Promise((resolve, _) => {
+    const rt = localStorage.getItem('REFRESH_TOKEN')
+    store.dispatch({ type: 'REFRESH_TOKEN_START', refresh_token: rt })
+  })
+}
 
 function resendPendingRequests() {
   requestQueue.forEach(async deferredRequest => {
@@ -102,13 +99,13 @@ service.interceptors.response.use(
         // })
         return
       }
-      // if (!isPending) {
-      //   isPending = true
-      //   refreshToken().then(() => {
-      //     isPending = false
-      //     resendPendingRequests()
-      //   })
-      // }
+      if (!isPending) {
+        isPending = true
+        refreshToken().then(() => {
+          isPending = false
+          resendPendingRequests()
+        })
+      }
 
       return new Promise((resolve, reject) => {
         lastRequest.resolve = resolve

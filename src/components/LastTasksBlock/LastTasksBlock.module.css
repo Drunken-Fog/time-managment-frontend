@@ -1,6 +1,7 @@
 .block {
+  /* max-width: 50%; */
+  max-height: 100%;
   background: white;
-  max-width: 50%;
 }
 
 .account {
@@ -13,7 +14,8 @@
 }
 
 .account, .title {
-  padding: 20px 86px;
+  padding: 10px 86px;
+  padding-top: 30px;
 }
 
 .tasks {
@@ -22,11 +24,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .tasks button {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .list {

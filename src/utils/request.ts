@@ -1,11 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from 'axios'
-// TODO: поправить
-import { select } from 'redux-saga/effects'
-import { refreshTokenStart } from '../store/app/actions'
-import { useDispatch } from 'react-redux'
 import { store } from '../index'
-
-// const dispatch = useDispatch()
 
 interface AxiosConfig {
   method: string

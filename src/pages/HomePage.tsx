@@ -58,7 +58,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     fetchProfile()
     fetchTasks()
-  }, [])
+  }, [createTaskModalIsOpen, fetchProfile, fetchTasks])
 
   return (
     <div className={styles.home}>

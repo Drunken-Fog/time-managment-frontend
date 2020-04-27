@@ -1,7 +1,5 @@
 import { Reducer } from 'redux'
 import { appTypes } from './types'
-import app from './sagas'
-import { StaticReadUsage } from 'three'
 
 const REFRESH_TOKEN = localStorage.getItem('REFRESH_TOKEN')
 const ACCESS_TOKEN = localStorage.getItem('ACCESS_TOKEN')

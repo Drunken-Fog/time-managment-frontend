@@ -1,5 +1,4 @@
 import { appTypes } from './types'
-import app from './sagas'
 
 type UserRegistrationData = {
   name: string

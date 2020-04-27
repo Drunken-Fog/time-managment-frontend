@@ -30,9 +30,9 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = props => {
             width={size}
             height={size}
             filterUnits='userSpaceOnUse'
-            color-interpolation-filters='sRGB'
+            colorInterpolationFilters='sRGB'
           >
-            <feFlood flood-opacity='0' result='BackgroundImageFix' />
+            <feFlood floodOpacity='0' result='BackgroundImageFix' />
             <feColorMatrix
               in='SourceAlpha'
               type='matrix'
@@ -74,7 +74,10 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = props => {
           cy={size / 2}
           r={radius}
           strokeDasharray={circumference + ' ' + circumference}
-          strokeDashoffset={circumference - (value * circumference) / max}
+          strokeDashoffset={(
+            circumference -
+            (value * circumference) / max
+          ).toString()}
         ></circle>
         <text
           className={styles.text}

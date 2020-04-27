@@ -12,7 +12,7 @@ type Props = {
 }
 
 export const Building: React.FC<Props> = props => {
-  const { level, width, height } = props
+  const { level = 1, width = 500, height = 300 } = props
 
   let camera: THREE.Camera
   let scene: THREE.Scene
@@ -29,22 +29,23 @@ export const Building: React.FC<Props> = props => {
   const wrapper = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    init()
-    animate()
-  })
+    if (level) {
+      init()
+      animate()
+    }
+  }, [level])
 
   function init() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000)
     camera.position.set(80, 60, 0)
     scene = new THREE.Scene()
-    scene.background = new THREE.Color(0xf5f5f5)
+    scene.background = new THREE.Color(0xffffff)
     loader.load(
       `https://cors-anywhere.herokuapp.com/https://time-management-sfedu.herokuapp.com/models/${level}level.glb`,
       function(gltf: any) {
         gltf.scene.castShadow = true
         scene.add(gltf.scene)
         render()
-        console.log(scene)
       },
       undefined,
       function(error: ErrorEvent) {

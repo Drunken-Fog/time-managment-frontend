@@ -1,24 +1,28 @@
 .block {
   /* max-width: 50%; */
   max-height: 100%;
-  background: white;
 }
 
 .account {
   display: flex;
   align-items: center;
+    font-size: 35px;
+    width: 80%;
+    margin: 10px auto;
 }
 
 .title {
-  color: var(--darkColor)
+  color: var(--darkColor);
+    width: 80%;
+    margin: 20px auto;
 }
 
 .account, .title {
-  padding: 10px 86px;
-  padding-top: 30px;
 }
 
 .tasks {
+    width: 80%;
+    margin: 20px auto;
   background: rgba(201, 205, 236, 0.1);
   border-radius: var(--borderRadius);
   display: flex;

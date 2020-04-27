@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback } from 'react'
-import { ProgressBlock, LastTasksBlock } from '../components'
+import { ProgressBlock, LastTasksBlock, Building } from '../components'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProfileStart, fetchTasksStart } from '../store/app/actions'
 import { ProgressLine } from '../ui'
@@ -28,12 +28,17 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className={styles.home}>
-      <ProgressBlock
-        level={level}
-        currentStars={stars}
-        totalStars={levelStars}
-        progressLine={<ProgressLine total={levelStars} value={stars} />}
-      />
+      <div className={styles.progressSection}>
+        <div className={styles.building}>
+          <Building level={level} width={700} height={400} />
+        </div>
+        <ProgressBlock
+          level={level}
+          currentStars={stars}
+          totalStars={levelStars}
+          progressLine={<ProgressLine total={levelStars} value={stars} />}
+        />
+      </div>
       <LastTasksBlock
         user={{ username, levelStars, stars, level }}
         tasks={tasks}

@@ -1,5 +1,9 @@
 
 .wrapper {
-    height: 400px;
     width: fit-content;
+    margin: 0px auto;
+}
+
+.building {
+    border: 2px solid #7B65E8;
 }

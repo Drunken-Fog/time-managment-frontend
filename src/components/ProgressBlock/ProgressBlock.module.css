@@ -1,25 +1,23 @@
 .wrapper {
-  width: 480px;
-  height: 538px;
+    width: 80%;
+    margin: 0px auto;
 }
 
 .wrapper > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: -54px;
+    padding: 20px;
 }
 
 .stats {
   display: flex;
   font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 .stats > svg {
-  padding-top: 17px;
-  padding-left: 10px;
+    margin-bottom: 5px;
 }
 .stats > div {
-  padding-top: 23px;
+    margin-bottom: 5px;
 }
 
 .lineWrapper {
@@ -28,5 +26,4 @@
 
 h2 {
   font-size: 29px;
-  margin: 15px 0px;
 }

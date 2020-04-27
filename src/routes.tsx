@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import { AuthPage } from './pages'
 import { HomePage, LoginPage, RegistrationPage } from './pages'
 
 type Props = boolean

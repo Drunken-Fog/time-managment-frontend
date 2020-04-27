@@ -7,6 +7,8 @@ import {
   refreshTokenUpdated,
   fetchProfileSuccess,
   fetchTasksSuccess,
+  taskCreateSuccess,
+  toggleCreateTaskModal,
 } from './actions'
 
 function* registrationWatcher() {
@@ -137,6 +139,39 @@ async function fetchTasks(data: any) {
   return response
 }
 
+// Task creating
+function* createTaskWatcher() {
+  yield takeEvery(appTypes.CREATE_TASK_START, createTaskWorker)
+}
+
+function* createTaskWorker({ payload }: any) {
+  const response = yield call(createTask, payload)
+  if (response && response.statusText === 'OK') {
+    yield put(taskCreateSuccess())
+    yield put(toggleCreateTaskModal(false))
+  }
+}
+
+async function createTask(data: any) {
+  const { uid, taskName, taskDescription, taskImportant, taskUrgent } = data
+
+  const response = await request({
+    url: 'https://time-management-sfedu.herokuapp.com/tasks/create',
+    method: 'POST',
+    data: {
+      owner: uid,
+      name: taskName,
+      description: taskDescription,
+      important: taskImportant,
+      urgent: taskUrgent,
+      active: false,
+      currentDuration: 0,
+      cycles: 0,
+    },
+  })
+  return response
+}
+
 export default function* app() {
   yield all([
     fork(registrationWatcher),
@@ -144,5 +179,6 @@ export default function* app() {
     fork(refreshTokenWatcher),
     fork(fetchProfileWatcher),
     fork(fetchTasksWatcher),
+    fork(createTaskWatcher),
   ])
 }

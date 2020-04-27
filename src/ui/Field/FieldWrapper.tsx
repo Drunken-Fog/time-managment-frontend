@@ -4,6 +4,7 @@ import styles from './Field.module.css'
 
 type FieldWrapperProps = {
   children?: React.ReactNode
+  className?: string
   labelText?: string
   withCircle?: boolean
   error?: string | boolean
@@ -11,8 +12,8 @@ type FieldWrapperProps = {
 }
 
 export const FieldWrapper: React.FC<FieldWrapperProps> = props => {
-  const { children, labelText, error, htmlFor, withCircle } = props
-  const containerClass = [styles.Field]
+  const { children, className, labelText, error, htmlFor, withCircle } = props
+  const containerClass = [styles.Field, className]
   const labelClass = [styles.FieldLabelDefault]
 
   if (error) {

@@ -1,5 +1,6 @@
 :root {
   --textColor: #5b5b5b;
+  --darkColor: #333;
   --secondTextColor: #9f9f9f;
   --primary: #7b65e8;
   --danger: #ff7a7a;
@@ -42,5 +43,5 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }

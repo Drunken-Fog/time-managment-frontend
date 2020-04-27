@@ -1,2 +1,4 @@
 export * from './AuthPage'
-export * from './BuildingPage'
+export * from './HomePage'
+export * from './LoginPage'
+export * from './RegistrationPage'

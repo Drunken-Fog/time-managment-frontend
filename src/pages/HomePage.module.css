@@ -1,0 +1,10 @@
+.home {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  padding: 0px 77px;
+  height: 100vh;
+}

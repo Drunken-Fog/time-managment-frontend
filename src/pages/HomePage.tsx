@@ -30,11 +30,7 @@ export const HomePage: React.FC = () => {
     <div className={styles.home}>
       <div className={styles.progressSection}>
         <div className={styles.building}>
-          <Building
-            level={level}
-            width={700}
-            height={400}
-          />
+          <Building level={level} width={700} height={400} />
         </div>
         <ProgressBlock
           level={level}

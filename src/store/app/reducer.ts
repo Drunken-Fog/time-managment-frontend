@@ -55,7 +55,7 @@ const appReducer: Reducer<any> = (state = initialState, action) => {
     case appTypes.FETCH_TASKS_SUCCESS: {
       return {
         ...state,
-        tasks: action.payload.data,
+        tasks: action.payload,
       }
     }
     case appTypes.USER_LOGIN_START: {

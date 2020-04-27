@@ -39,8 +39,9 @@
 }
 
 .App {
-  background: url('./assets/images/Background.svg');
-  background-size: cover;
+  background: url('./assets/images/br.svg'), url('./assets/images/bl.svg');
+  background-size: 150px;
+  background-position: left top, bottom right;
   background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;

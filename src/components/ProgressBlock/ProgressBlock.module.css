@@ -1,6 +1,7 @@
 .wrapper {
     width: 80%;
     margin: 0px auto;
+    text-align: center;
 }
 
 .wrapper > div {
@@ -9,6 +10,9 @@
 
 .stats {
   display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   font-size: 22px;
     margin-bottom: 5px;
     margin-top: 10px;
@@ -22,6 +26,7 @@
 
 .lineWrapper {
   width: 80%;
+  margin: 0 auto;
 }
 
 h2 {

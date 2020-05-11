@@ -32,7 +32,7 @@ async function registration(data: any) {
   const { name, email, password } = data
   try {
     const response = await request({
-      url: 'https://time-management-sfedu.herokuapp.com/users/registration',
+      url: `${process.env.REACT_APP_MAIN_URL}/users/registration`,
       method: 'POST',
       data: {
         username: name,
@@ -61,7 +61,7 @@ async function login(data: any) {
   const { email, password } = data
   try {
     const response = await request({
-      url: 'https://time-management-sfedu.herokuapp.com/users/login',
+      url: `${process.env.REACT_APP_MAIN_URL}/users/login`,
       method: 'POST',
       data: {
         password,
@@ -91,7 +91,7 @@ function* refreshTokenWorker({ payload }: any) {
 
 async function refreshTokenQuery(data: any) {
   const response = await request({
-    url: 'https://time-management-sfedu.herokuapp.com/users/token/refresh',
+    url: `${process.env.REACT_APP_MAIN_URL}/users/token/refresh`,
     method: 'POST',
     data: {
       refresh_token: data.REFRESH_TOKEN,
@@ -112,7 +112,7 @@ function* fetchProfileWorker({ payload }: any) {
 
 async function fetchProfile(data: any) {
   const response = await request({
-    url: 'https://time-management-sfedu.herokuapp.com/users/profile',
+    url: `${process.env.REACT_APP_MAIN_URL}/users/profile`,
     params: {
       id: data,
     },
@@ -131,7 +131,7 @@ function* fetchTasksWorker({ payload }: any) {
 
 async function fetchTasks(data: any) {
   const response = await request({
-    url: 'https://time-management-sfedu.herokuapp.com/tasks',
+    url: `${process.env.REACT_APP_MAIN_URL}/tasks`,
     params: {
       uid: data,
     },
@@ -156,7 +156,7 @@ async function createTask(data: any) {
   const { uid, taskName, taskDescription, taskImportant, taskUrgent } = data
 
   const response = await request({
-    url: 'https://time-management-sfedu.herokuapp.com/tasks/create',
+    url: `${process.env.REACT_APP_MAIN_URL}/tasks/create`,
     method: 'POST',
     data: {
       owner: uid,

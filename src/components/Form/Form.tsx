@@ -11,8 +11,7 @@ type FormState = { [k: string]: string }
 type Props = {
   children: React.ReactElement[]
   id: string
-  // TODO TYPE
-  onSubmit?: any
+  onSubmit: (arg0: FormState) => void
   actionText: string
   subText: string
   subTextLink: string
@@ -29,15 +28,13 @@ export const Form: React.FC<Props> = props => {
     subTextLink,
     subTextLinkTitle,
   } = props
+
   const validators: Validators = {}
   const initialFormState: FormState = {}
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [formState, setFormState] = useState<FormState>(initialFormState)
 
-  //   Для всей формы
   const [formErrorText, setFormErrorText] = useState<FormErrorTextState>(null)
-
-  //   Для поля
   const [fieldErrors, setFieldErrors] = useState<FieldErrorsState>({})
 
   function handleChildren(child: ReactElement) {
@@ -97,7 +94,7 @@ export const Form: React.FC<Props> = props => {
       disabled: isSubmitting,
       value: value,
       error: fieldErrors[name],
-      onChange: (value: string): void => {
+      onChange: (_: string, value: string): void => {
         try {
           validate(value)
           setFieldErrors((errors: FieldErrorsState) => {
@@ -117,7 +114,7 @@ export const Form: React.FC<Props> = props => {
   function renderFooter() {
     return (
       <div style={{ marginRight: ' 90px' }}>
-        {/* TODO: Для теста */}
+        {/* Ошибки от сервера */}
         {formErrorText || null}
         <Button width={211} disabled={isSubmitting} generalType='submit'>
           {actionText}

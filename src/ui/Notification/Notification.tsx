@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Notification.module.css'
-import { Timer, Pause, Play } from '../../assets/icons'
+import { TimerIcon, Pause, Play } from '../../assets/icons'
 
 type NotificationProps = {
   title?: string
@@ -29,7 +29,7 @@ export const Notification: React.FC<NotificationProps> = props => {
       <h2>{title}</h2>
       <div>
         <div className={styles.timer}>
-          <Timer />
+          <TimerIcon />
         </div>
         <div>
           <h3>Текущий таймер</h3>

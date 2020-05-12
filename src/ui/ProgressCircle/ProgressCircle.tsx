@@ -15,7 +15,7 @@ export const ProgressCircle: React.FC<ProgressCircleProps> = props => {
   const circumference = 2 * Math.PI * radius
 
   return (
-    <div>
+    <div className={styles.container}>
       <svg
         className={styles.wrapper}
         width={size}

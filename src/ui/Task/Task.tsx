@@ -10,7 +10,8 @@ type TaskProps = {
 }
 
 export const Task: React.FC<TaskProps & TaskIconsProps> = props => {
-  const { name, status, urgent, important } = props
+  const { name, status = 'active', urgent, important } = props
+
   return (
     <div className={styles.task}>
       <div className={styles.content}>

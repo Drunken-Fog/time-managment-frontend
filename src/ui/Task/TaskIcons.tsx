@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './TaskIcons.module.css'
-import { ErrorIcon, Timer } from '../../assets/icons'
+import { ErrorIcon, TimerIcon } from '../../assets/icons'
 import { TaskStatus } from '../../types'
 import cn from 'classnames'
 
@@ -26,12 +26,12 @@ export const TaskIcons: React.FC<TaskIconsProps> = props => {
     if (urgent && important) {
       return (
         <>
-          <Timer />
+          <TimerIcon />
           <ErrorIcon />
         </>
       )
     } else if (urgent) {
-      return <Timer />
+      return <TimerIcon />
     }
     return <ErrorIcon />
   }

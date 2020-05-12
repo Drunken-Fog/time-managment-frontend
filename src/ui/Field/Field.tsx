@@ -14,9 +14,13 @@ type FieldProps = {
   id: string
   required?: boolean
   disabled?: boolean
-  onChange?: (arg0: string) => void
   value?: string
   validate?: (arg0: string) => void
+  onChange?: (
+    name: string,
+    value: string,
+    validate?: (arg0: string) => void
+  ) => void
 }
 
 export const Field: React.FC<FieldProps> = props => {
@@ -33,10 +37,11 @@ export const Field: React.FC<FieldProps> = props => {
     withCircle,
     className,
     value,
+    validate,
   } = props
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.target.value)
+    onChange?.(event.target.name, event.target.value, validate)
   }
 
   return (

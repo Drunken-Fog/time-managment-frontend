@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import styles from './CreateTaskModal.module.css'
 import { Modal } from '../../ui/Modal'
+import { ValidateFields, validateFieldRequire } from '../../utils'
 import { Field, Button } from '../../ui'
+
+type FieldErrorsState = { [k: string]: string | boolean } | {}
+
+const taskNameKey = 'taskName' as keyof FieldErrorsState
+const taskDescriptionKey = 'taskDescription' as keyof FieldErrorsState
 
 type CreateTaskModalProps = {
   modalIsOpen: boolean
@@ -11,36 +17,63 @@ type CreateTaskModalProps = {
 
 export const CreateTaskModal: React.FC<CreateTaskModalProps> = props => {
   const { modalIsOpen, toggleModal, createTask } = props
-  function closeModal() {
-    toggleModal(false)
+
+  const initialState = {
+    taskName: '',
+    taskDescription: '',
   }
 
-  // Todo в один useState...
-  const [taskName, setTaskName] = useState('')
-  const [taskDescription, setTaskDescription] = useState('')
-  const [taskImportant, setTaskImportant] = useState(false)
-  const [taskUrgent, setTaskUrgent] = useState(false)
+  let validators = {
+    taskName: validateFieldRequire,
+    taskDescription: validateFieldRequire,
+  }
+
+  function closeModal() {
+    toggleModal(false)
+    setFieldErrors({})
+  }
+
+  const [state, setState] = useState(initialState)
+  const [taskImportant, setTaskImportant] = useState<boolean>(false)
+  const [taskUrgent, setTaskUrgent] = useState<boolean>(false)
+  const [fieldErrors, setFieldErrors] = useState({})
 
   function submitHandler() {
     try {
-      createTask({
-        taskName,
-        taskDescription,
-        taskImportant,
-        taskUrgent,
-      })
-
+      const errors = ValidateFields(state, validators)
+      const isErrorsEmpty = Object.keys(errors).length === 0
+      setFieldErrors(errors || {})
+      if (isErrorsEmpty) {
+        createTask({ ...state, taskImportant, taskUrgent })
+        setState(initialState)
+        setTaskImportant(false)
+        setTaskUrgent(false)
+      }
       // toggleModal(false)
     } catch (e) {
       console.error(e)
     }
   }
 
-  function handleTaskNameChange(value: string) {
-    setTaskName(value)
-  }
-  function handleTaskDescriptionChange(value: string) {
-    setTaskDescription(value)
+  function handleStateChange(
+    name: string,
+    value: string,
+    validate?: (arg0: string) => void
+  ): void {
+    try {
+      validate?.(value)
+      setFieldErrors((errors: any) => {
+        const { [name]: omitted, ...rest } = errors
+        return rest
+      })
+    } catch (e) {
+      //
+    }
+
+    setState({
+      ...state,
+      [name]: value,
+    })
   }
 
   return (
@@ -48,27 +81,37 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = props => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Создание задачи</h1>
         <Field
-          onChange={handleTaskNameChange}
+          onChange={handleStateChange}
           className={styles.input}
           id='taskName'
+          name='taskName'
+          value={state.taskName}
           placeholder='Название задачи'
+          validate={validateFieldRequire}
+          error={fieldErrors[taskNameKey]}
         />
         <Field
-          onChange={handleTaskDescriptionChange}
+          onChange={handleStateChange}
           className={styles.input}
           id='taskDescription'
+          name='taskDescription'
+          value={state.taskDescription}
           placeholder='Описание задачи'
+          validate={validateFieldRequire}
+          error={fieldErrors[taskDescriptionKey]}
         />
         <div className={styles.checkboxes}>
           <input
-            onClick={() => setTaskImportant(!taskImportant)}
+            onChange={() => setTaskImportant(!taskImportant)}
+            checked={taskImportant}
             type='checkbox'
             name='important'
             id='important'
           />
           <label htmlFor='important'>Важная</label>
           <input
-            onClick={() => setTaskUrgent(!taskUrgent)}
+            onChange={() => setTaskUrgent(!taskUrgent)}
+            checked={taskUrgent}
             type='checkbox'
             name='urgent'
             id='urgent'

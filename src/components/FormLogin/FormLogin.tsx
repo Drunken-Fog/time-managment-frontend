@@ -13,8 +13,7 @@ import { userLogin } from '../../store/app/actions'
 export const FormLogin: React.FC = () => {
   const dispatch = useDispatch()
 
-  // TODO: отправляет форму, даже если пустые поля
-  const login = useCallback(
+  const loginSubmiter = useCallback(
     arg => {
       dispatch(userLogin(arg))
     },
@@ -30,7 +29,7 @@ export const FormLogin: React.FC = () => {
       >
         <Form
           id={FormLoginSpecific.id}
-          onSubmit={login}
+          onSubmit={loginSubmiter}
           actionText={FormLoginSpecific.actionText}
           subText={FormLoginSpecific.subText}
           subTextLink={FormLoginSpecific.subTextLink}
@@ -41,16 +40,16 @@ export const FormLogin: React.FC = () => {
             name={FieldNames.email}
             generalType='email'
             placeholder={FieldPlaceholders.email}
-            withCircle
             validate={validateEmail}
+            withCircle
           />
           <Field
             id={FieldNames.password}
             name={FieldNames.password}
             generalType='password'
             placeholder={FieldPlaceholders.password}
-            withCircle
             validate={validatePassword}
+            withCircle
           />
         </Form>
       </div>

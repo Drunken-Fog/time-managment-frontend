@@ -13,8 +13,7 @@ import { userRegistration } from '../../store/app/actions'
 export const FormRegistration: React.FC = () => {
   const dispatch = useDispatch()
 
-  // TODO: отправляет форму, даже если пустые поля
-  const registration = useCallback(
+  const registrationSubmiter = useCallback(
     arg => {
       dispatch(userRegistration(arg))
     },
@@ -29,7 +28,7 @@ export const FormRegistration: React.FC = () => {
         }}
       >
         <Form
-          onSubmit={registration}
+          onSubmit={registrationSubmiter}
           id={FormRegistrationSpecific.id}
           actionText={FormRegistrationSpecific.actionText}
           subText={FormRegistrationSpecific.subText}
@@ -41,24 +40,24 @@ export const FormRegistration: React.FC = () => {
             name={FieldNames.name}
             generalType='text'
             placeholder={FieldPlaceholders.name}
-            withCircle
             validate={validateName}
+            withCircle
           />
           <Field
             id={FieldNames.email}
             name={FieldNames.email}
             generalType='email'
             placeholder={FieldPlaceholders.email}
-            withCircle
             validate={validateEmail}
+            withCircle
           />
           <Field
             id={FieldNames.password}
             name={FieldNames.password}
             generalType='password'
             placeholder={FieldPlaceholders.password}
-            withCircle
             validate={validatePassword}
+            withCircle
           />
         </Form>
       </div>

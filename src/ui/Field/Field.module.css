@@ -1,0 +1,132 @@
+:root {
+  --backgroundColorPrimary: #f5f5f5;
+  --ellipseBorderRadius: 50%;
+}
+
+.Field {
+  display: flex;
+  height: fit-content;
+  width: 100%;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.Field input {
+  order: 1;
+  border-radius: var(--borderRadius);
+  background-color: var(--backgroundColorPrimary);
+  outline: none;
+  border: 2px solid var(--backgroundColorPrimary);
+  min-height: 26px;
+  max-height: 35px;
+  min-width: 325px;
+  padding: 6px 16px;
+  font-size: 18px;
+  color: var(--textColor);
+  margin-left: 8px;
+  box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.Field > div {
+  display: flex;
+  align-items: center;
+}
+
+.Field input:disabled {
+  opacity: var(--disabled);
+  cursor: not-allowed;
+}
+
+.Field input:disabled + label {
+  opacity: var(--disabled);
+}
+
+.Field input::placeholder {
+  color: var(--secondTextColor);
+}
+
+.Field input:focus {
+  border: 2px solid var(--primary);
+  background: var(--white);
+}
+
+.FieldLabelDefault {
+  order: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary);
+  border-radius: var(--ellipseBorderRadius);
+  width: 17px;
+  height: 17px;
+}
+
+.FieldLabelDefault div {
+  background: white;
+  border-radius: var(--ellipseBorderRadius);
+  width: 7px;
+  height: 7px;
+}
+
+.Field input:focus + label > div {
+  display: none;
+}
+
+/* Icon alert */
+.iconWrapper {
+  order: 2;
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  background: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(201, 205, 236, 0.3);
+}
+
+.iconWrapper:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 100%;
+  top: calc(50% - 7.5px);
+  border-top: 8px solid transparent;
+  border-right: 8px solid var(--white);
+  border-bottom: 8px solid transparent;
+}
+
+/* Errors */
+.invalid {
+  color: var(--danger);
+}
+
+.invalid input {
+  border: 2px solid var(--danger);
+}
+
+.invalid input + .FieldLabelDefault {
+  background-color: var(--danger);
+}
+
+.invalid input:focus + .FieldLabelDefault {
+  background-color: var(--primary);
+}
+.invalid input:focus + .FieldLabelDefault + div {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .Field {
+    width: auto;
+  }
+  .Field input {
+    min-width: auto;
+  }
+}

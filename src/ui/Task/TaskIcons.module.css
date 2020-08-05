@@ -1,0 +1,45 @@
+:root {
+  --iconFillSuccess: #85d5d4;
+  --iconFillWarning: #ff7a7a;
+  --iconFillInProgress: #87b8f5;
+  --backgroundColorSuccess: #e0f5f4;
+  --backgroundColorWarning: rgba(255, 122, 122, 0.3);
+  --backgroundColorInProgress: #e3effd;
+}
+
+.wrapper {
+  padding: 8px 6px;
+  border-radius: 28px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.wrapper svg {
+  padding: 0 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.standAlone {
+  width: 38px;
+}
+
+.compeleted,
+.compeleted svg path {
+  background-color: var(--backgroundColorSuccess);
+  fill: var(--iconFillSuccess);
+}
+
+.stopped,
+.stopped svg path {
+  background-color: var(--backgroundColorWarning);
+  fill: var(--iconFillWarning);
+}
+
+.active,
+.active svg path {
+  background-color: var(--backgroundColorInProgress);
+  fill: var(--iconFillInProgress);
+}

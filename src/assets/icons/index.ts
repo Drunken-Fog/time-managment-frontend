@@ -1,0 +1,5 @@
+export { ReactComponent as ErrorIcon } from './error.svg'
+export { ReactComponent as TimerIcon } from './timer.svg'
+export { ReactComponent as Pause } from './pause.svg'
+export { ReactComponent as Play } from './play.svg'
+export { ReactComponent as Star } from './star.svg'

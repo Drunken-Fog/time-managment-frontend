@@ -1,0 +1,20 @@
+:root {
+  --enterSocialMediaTitlePadding: 18px;
+}
+
+.wrapper {
+  background: var(--primary);
+}
+
+.text {
+  color: var(--white);
+  padding-top: var(--enterSocialMediaTitlePadding);
+}
+
+.icons {
+  padding: 12px;
+}
+
+.icons * {
+  padding: 0 9px;
+}

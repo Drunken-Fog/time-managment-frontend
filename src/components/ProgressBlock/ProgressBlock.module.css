@@ -1,0 +1,34 @@
+.wrapper {
+    width: 80%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.wrapper > div {
+    padding: 20px;
+}
+
+.stats {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.stats > svg {
+    margin-bottom: 5px;
+}
+.stats > div {
+    margin-bottom: 5px;
+}
+
+.lineWrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 29px;
+}

@@ -1,0 +1,32 @@
+.wrapper {
+  padding: 50px 204px;
+  width: 361px;
+}
+
+.title {
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  padding-bottom: 41px;
+}
+
+.input {
+  padding-bottom: 41px;
+  max-width: 100%;
+  width: 100%;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 41px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

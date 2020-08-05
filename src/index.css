@@ -1,13 +1,48 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --textColor: #5b5b5b;
+  --darkColor: #333;
+  --secondTextColor: #9f9f9f;
+  --primary: #7b65e8;
+  --danger: #ff7a7a;
+  --primaryRGBA: rgba(123, 101, 232, .5);
+  --dangerRGBA: rgba(255, 122, 122, .5);
+  --info: #87B8F5;
+  --success: #85D5D4;
+  --white: #fff;
+  --backgroundColorSuccess: #e0f5f4;
+  --backgroundColorDanger: rgba(255, 122, 122, 0.3);
+  --backgroundColorInProgress: #e3effd;
+  --borderRadius: 5px;
+  --disabled: 0.7;
+  --silver: #f5f5f5;
+  --tabletSize: 768px;
+  --boxShadow: 0px 0px 10px var(--primary)
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Product Sans';
+  src: url('./assets/fonts/ProductSans-Regular.eot');
+  src: local('Product Sans'), local('ProductSans-Regular'),
+    url('./assets/fonts/ProductSans-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('./assets/fonts/ProductSans-Regular.woff') format('woff'),
+    url('./assets/fonts/ProductSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  color: var(--textColor);
+  font-family: 'Product Sans', sans-serif;
+}
+
+.App {
+  background: url('./assets/images/br.svg'), url('./assets/images/bl.svg');
+  background-size: 150px;
+  background-position: left top, bottom right;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
 }

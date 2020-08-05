@@ -1,0 +1,17 @@
+.active {
+  background: var(--info);
+  height: 4px;
+  width: 100%;
+}
+
+.compeleted {
+  background: var(--success);
+  height: 4px;
+  width: 100%;
+}
+
+.stopped {
+  background: var(--danger);
+  height: 4px;
+  width: 100%;
+}
